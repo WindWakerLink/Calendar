@@ -1,0 +1,8 @@
+# C CALENDAR PROJECT
+## WHY DID I MAKE THIS PROJECT??
+
+Basically I made this up because:
+
+1. I like doing personal proyects
+2. I wanted to improve my skills as a C programmer
+3. Honestly, I was bored asf and had nothing better to do
