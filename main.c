@@ -8,7 +8,10 @@ archivos y eso*/
 
 int main(){
 
-    time_t fecha_actual = time(NULL); //Primero obtenemos la fecha en bruto graicas a time(NULL);
+    time_t fecha_actual = time(NULL); //Primero obtenemos la fecha en segundos del Epoch time gracias a time(NULL);
+
+    //El Epoch time es el tiempo que ha pasado desde el 1 de enero de 1970 
+
     struct tm *t = localtime(&fecha_actual); /* Luego guardamos la fecha de forma más legible en un puntero a
     struct tm (porque localtime devuelve un puntero) */ 
 
@@ -18,11 +21,11 @@ int main(){
         t->tm_year + 1900
     };
 
-    /*Luego copiamos los datos correspondientes del dia mes y año obtenidos con el puntero *t al struct
+    /*Después copiamos los datos correspondientes del dia mes y año obtenidos con el puntero *t al struct
     (Date) today para saber la fecha de ese día y poner el encabezado del mes y esas cosas*/
 
     int DIM = days_in_month(today.month, today.year); // DIM = Days In Month
-    int weekday = get_weekday(today.day, today.month, today.year);
+    int weekday = get_weekday(1, today.month, today.year);
     print_header(today.month, today.year);
     print_weekdays();
     print_calendar(weekday, DIM);

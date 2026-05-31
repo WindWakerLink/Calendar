@@ -31,14 +31,14 @@ FORMULA DE ZELLER PARA SACAR EL DÍA DE LA SEMANA CORRESPONDIENTE*/
 
 int get_weekday(int day, int month, int year) { //Aqui obtenemos el primer dia de la primera semana del mes
 
-    if (month < 3){
+    if (month < 3){ // Esta comparativa se hace porque al usar el Epoch time
         month += 12;
         year -= 1;
     }
 
     int q = day, m = month, K = year % 100, J = year / 100;
     int h = (q + ((13*(m+1))/5) + K + (K/4) + (J/4) + 5*J ) % 7;
-    return (h + 1) % 7;
+    return (h + 7) % 7;
 }
 
 void print_header(int month, int year){ //aqui imprimimos algo como "December 2067" y eso y lo centramos
