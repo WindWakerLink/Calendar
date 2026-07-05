@@ -9,4 +9,4 @@ Basically I made it because:
 
 By the way, there's nothing rn on the events files and storage files (that's for later versions of the project) :)
 
-Oh, and also don't judgme if the code is trash. I'm trying my hardest to make the code as good as possible
+Oh, and also don't judge me if the code is trash. I'm trying my hardest to make the code as good as possible
