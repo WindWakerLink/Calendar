@@ -17,7 +17,7 @@ This project right now includes:
 
 ## NOTES
 
-- All comments are in Spanish ('cus I'm Spanish, duh)
+- All comments are in Spanish ('cause I'm Spanish, duh)
 - Right now, the calendar doesn't show in what day you are (I have to change that)
 - By the way, there's nothing rn on the events files and storage files (that's for later versions of the project) :)
 - Oh, and also don't judge me if the code is trash. I'm trying my hardest to make the code as good as possible
