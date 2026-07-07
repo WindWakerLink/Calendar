@@ -9,7 +9,7 @@ typedef struct{
     int year;
 } Date; /*Aqui tenemos un struct que hace alusión a una fecha cualquiera*/
 
-void print_calendar(int day, int month_days);
+void print_calendar(int day, int month_days, int current_day);
 void print_weekdays();
 void print_header(int month, int year);
 int is_leap(int year);

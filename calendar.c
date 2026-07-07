@@ -1,11 +1,28 @@
 #include <stdio.h>
-#include <time.h>
 #include "calendar.h"
 
 
  int is_leap(int year){  //Aqui comprobamos si el año actual es o no bisiesto
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
+
+/*
+ *
+ *
+    ╔══════════════════════╗
+    ║       July 2026      ║ 
+    ╠══════════════════════╣
+    ║ Su Mo Tu We Th Fr Sa ║
+    ║          1  2  3  4  ║
+    ║  5  6  7  8  9 10 11 ║
+    ║ 12 13 14 15 16 17 18 ║
+    ║ 19 20 21 22 23 24 25 ║
+    ║ 26 27 28 29 30 31    ║
+    ╚══════════════════════╝*
+ *
+ *Así es como debería de verse la segunda versión del calendario
+ Esta versión del calendario está en desarrollo*
+ * */
 
 static const char *months_name[12] = {"January", "February", "March", "April", "May", "June", "July",
                         "August", "September", "October", "November", "December"};
@@ -31,7 +48,7 @@ FORMULA DE ZELLER PARA SACAR EL DÍA DE LA SEMANA CORRESPONDIENTE*/
 
 int get_weekday(int day, int month, int year) { //Aqui obtenemos el primer dia de la primera semana del mes
 
-    if (month < 3){ // Esta comparativa se hace porque al usar el Epoch time
+    if (month < 3){ // Esta comparativa se hace porque al usar el Epoch time, suele haber una desincronización
         month += 12;
         year -= 1;
     }
@@ -41,24 +58,33 @@ int get_weekday(int day, int month, int year) { //Aqui obtenemos el primer dia d
     return (h + 7) % 7;
 }
 
-void print_header(int month, int year){ //aqui imprimimos algo como "December 2067" y eso y lo centramos
-                                        //con espacios
-    printf("   ");
-    printf("   ");
-    printf("%s %d\n", months_name[month - 1], year);
+void print_header(int month, int year){ //aqui imprimimos algo como "December 2067" y eso y lo centramos con espacios
+   
+    puts("╔══════════════════════╗");
+    printf("║    ");
+    printf("%s %d", months_name[month - 1], year);
+    if (month == 1 || month == 10 ) printf("      ║\n");
+    else if (month == 2 || month == 11 || month == 12) printf("     ║\n");
+    else if (month == 3 || month == 4) printf("        ║\n");
+    else if (month == 5) printf("          ║\n");
+    else if (month == 6 || month == 7) printf("         ║\n");
+
+    puts("╠══════════════════════╣"); 
 }
 
 void print_weekdays(){ //Y aquí lo mismo de antes pero con los acronimos de los días de la semana
     int i;
+    printf("║ ");
     for (i = 0; wdays[i] != NULL; i++){
         printf("%s ", wdays[i]);
     }
+    printf("║\n");
 }
 
-void print_calendar(int day, int month_days){ //En esta funcion imprimimos los numeros del calendario
-    printf("\n");
+void print_calendar(int day, int month_days, int current_day){ //En esta funcion imprimimos los numeros del calendario
+    //printf("\n");
     int i, k = 0; 
-
+    printf("║ ");
     for (int j = 1; j < day; j++){ //En este bucle se imprimen los espacios antes de que inicie el día 1
         printf("   ");
         k++;
@@ -66,12 +92,20 @@ void print_calendar(int day, int month_days){ //En esta funcion imprimimos los n
     
     for (i = 1; i <= month_days; i++){ //Y en este bucle se imprime día por día
         k++;
-        k == 1 || k == 7 ? printf("\033[31m%2d \033[0m", i) : printf("%2d ",i);
+        
+        if (k == 1 || k == 7) printf("\033[31m%2d \033[0m", i); 
+        else if (i == current_day) printf("\033[7m%2d\033[0m ", i);
+        else printf("%2d ", i);
+        
         if (k == 7){
+            printf("║");
             printf("\n");
+            if (i != month_days) printf("║ ");
             k = 0;
         }
     }
+    puts("   ║");
+    puts("╚══════════════════════╝");
 }
 
 
