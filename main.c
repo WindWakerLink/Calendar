@@ -30,7 +30,7 @@ int main(int argc, char **argv){
 
     if (argc >= 3 && argv[2] != NULL){
         int i = atoi(argv[2]);
-        if (i != 0 && i > 0 && i <= 9999) today.year = i; 
+        if (i != 0 && i >= 1000  && i <= 9999) today.year = i; 
     }
 
 

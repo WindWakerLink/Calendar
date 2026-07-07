@@ -68,6 +68,9 @@ void print_header(int month, int year){ //aqui imprimimos algo como "December 20
     else if (month == 3 || month == 4) printf("        ║\n");
     else if (month == 5) printf("          ║\n");
     else if (month == 6 || month == 7) printf("         ║\n");
+    else if (month == 8) printf("       ║\n");
+    else if (month == 9) printf("    ║\n");
+    
 
     puts("╠══════════════════════╣"); 
 }
@@ -104,7 +107,15 @@ void print_calendar(int day, int month_days, int current_day){ //En esta funcion
             k = 0;
         }
     }
-    puts("   ║");
+
+    if (k != 0){
+        while (k < 7){
+            printf("   ");
+            k++;        
+        }
+    printf("║\n");
+    }
+
     puts("╚══════════════════════╝");
 }
 
