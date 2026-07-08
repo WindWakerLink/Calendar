@@ -13,15 +13,15 @@ my skills as a C programmer
 This project right now includes:
 
 - An interface similar to the "cal" command
-- All weekdays are marked in red
-- The current day is also marked like the "cal" command
-- The calendar supports CLI arguments
+- All weekdays are marked in red. Current day is also marked
+- CLI arguments support
+- A calendar box so the calendar looks way cooler 
 - You can set the month in the second argument (in lowercase)
-and the year in the third argument (up to 9999).
-EXAMPLE: ./main july 23428
+and the year in the third argument (from 1000 to 9999).
+EXAMPLE: ./main november 2029
 - If you don't pass any month or year as arguments, the calendar will use
 the current month and year
-- I decide to add a calendar box so the calendar loos way cooler (I have to finish it) 
+
 
 
 ## NOTES
