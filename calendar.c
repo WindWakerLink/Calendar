@@ -84,7 +84,7 @@ void print_weekdays(){ //Y aquí lo mismo de antes pero con los acronimos de los
     printf("║\n");
 }
 
-void print_calendar(int day, int month_days, int current_day){ //En esta funcion imprimimos los numeros del calendario
+void print_calendar(int day, int month_days, int date_day, int date_month, int date_year, int current_day, int current_month, int current_year){ //En esta funcion imprimimos los numeros del calendario
     //printf("\n");
     int i, k = 0; 
     printf("║ ");
@@ -97,7 +97,7 @@ void print_calendar(int day, int month_days, int current_day){ //En esta funcion
         k++;
         
         if (k == 1 || k == 7) printf("\033[31m%2d \033[0m", i); 
-        else if (i == current_day) printf("\033[7m%2d\033[0m ", i);
+        else if (i == current_day && date_month == current_month && date_year == current_year) printf("\033[7m%2d\033[0m ", i);
         else printf("%2d ", i);
         
         if (k == 7){

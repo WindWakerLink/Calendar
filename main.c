@@ -12,12 +12,22 @@ int main(int argc, char **argv){
 
     struct tm *t = localtime(&current_date); /* Luego guardamos la fecha de forma más legible en un puntero a
     struct tm (porque localtime devuelve un puntero) */ 
-
-    Date today = {
+    Date date = {
         t->tm_mday,
         t->tm_mon + 1,
         t->tm_year + 1900
     };
+    
+
+   Date today = {
+
+        t->tm_mday,
+        t->tm_mon + 1,
+        t->tm_year + 1900
+
+
+   }; 
+
 
     /*Después copiamos los datos correspondientes del dia mes y año obtenidos con el puntero *t al struct
     (Date) today para saber la fecha de ese día y poner el encabezado del mes y esas cosas*/
@@ -26,19 +36,19 @@ int main(int argc, char **argv){
                         "august", "september", "october", "november", "december"}; 
 
   
-    for (int i = 0; mn[i] != NULL && argc >= 2; i++) if (strcmp(argv[1], mn[i]) == 0) today.month = i + 1;
+    for (int i = 0; mn[i] != NULL && argc >= 2; i++) if (strcmp(argv[1], mn[i]) == 0) date.month = i + 1;
 
     if (argc >= 3 && argv[2] != NULL){
         int i = atoi(argv[2]);
-        if (i != 0 && i >= 1000  && i <= 9999) today.year = i; 
+        if (i != 0 && i >= 1000  && i <= 9999) date.year = i; 
     }
 
 
-    int DIM = days_in_month(today.month, today.year); // DIM -> Days In Month
-    int weekday = get_weekday(1, today.month, today.year);
-    
-    print_header(today.month, today.year); 
+    int DIM = days_in_month(date.month, date.year); // DIM -> Days In Month
+    int weekday = get_weekday(1, date.month, date.year);
+    puts("");    
+    print_header(date.month, date.year); 
     print_weekdays();
-    print_calendar(weekday, DIM, today.day);
+    print_calendar(weekday, DIM, date.day, date.month, date.year, today.day, today.month, today.year);
     puts(""); 
 }
